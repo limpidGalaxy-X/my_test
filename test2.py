@@ -1,4 +1,4 @@
-import test2
+import test
 
-obj = test2.MyClass("Hello, World!")
+obj = test.MyClass("Hello, World!")
 obj.display()

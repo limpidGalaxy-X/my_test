@@ -1,4 +1,4 @@
 import test
 
-obj = test.MyClass("Hello, World!")
-obj.display()
+apple = test.Fruits("Apple", "Red")
+print(apple.feature())

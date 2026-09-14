@@ -1,0 +1,61 @@
+{
+  // 这些任务在 VS Code 的集成终端里执行，用的是"当前窗口所连那台机器"的 docker：
+  //   WSL 模式 / 容器模式 -> Linux 的 bash（本文件里的 2>/dev/null 等写法就是给 bash 的）
+  // 用法：Ctrl+Shift+P -> Tasks: Run Task -> 选一个；或直接 Ctrl+Shift+B 跑默认任务（构建并运行）
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "docker: 构建镜像",
+      "type": "shell",
+      "command": "docker build -t hello-devops:1.0 .",
+      "problemMatcher": []
+    },
+    {
+      "label": "docker: 运行容器（挂 data 卷）",
+      "type": "shell",
+      "command": "docker rm -f hello-web 2>/dev/null; docker run -d --name hello-web -p 8000:8000 -v \"${workspaceFolder}/data:/data\" hello-devops:1.0",
+      "problemMatcher": []
+    },
+    {
+      "label": "docker: 构建并运行",
+      "dependsOrder": "sequence",
+      "dependsOn": ["docker: 构建镜像", "docker: 运行容器（挂 data 卷）"],
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "docker: 跟踪日志",
+      "type": "shell",
+      "command": "docker logs -f hello-web",
+      "problemMatcher": [],
+      "isBackground": true
+    },
+    {
+      "label": "docker: 进容器 bash",
+      "type": "shell",
+      "command": "docker exec -it hello-web bash",
+      "problemMatcher": []
+    },
+    {
+      "label": "docker: 删除容器",
+      "type": "shell",
+      "command": "docker rm -f hello-web",
+      "problemMatcher": []
+    },
+    {
+      "label": "compose: 启动",
+      "type": "shell",
+      "command": "docker compose up -d --build",
+      "problemMatcher": []
+    },
+    {
+      "label": "compose: 停止",
+      "type": "shell",
+      "command": "docker compose down",
+      "problemMatcher": []
+    }
+  ]
+}

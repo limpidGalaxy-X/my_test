@@ -1,0 +1,25 @@
+{
+  // 按 F5 就能调试。程序会跑在"当前这个 VS Code 窗口所连的那台机器"上：
+  //   WSL 模式      -> 跑在 Ubuntu 里
+  //   容器模式      -> 跑在容器里
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: 调试 app.py",
+      // 新版 Python 扩展用 debugpy；如果你的扩展很旧，报"找不到 debugger"时改成 "python"
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/app.py",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "env": {
+        // 调试时数据写到项目里的 data/（已被 .gitignore 忽略）
+        "DATA_DIR": "${workspaceFolder}/data",
+        "FLASK_DEBUG": "0"
+      },
+      // 打开它就能在 Jinja 模板里下断点
+      "jinja": true,
+      "justMyCode": true
+    }
+  ]
+}

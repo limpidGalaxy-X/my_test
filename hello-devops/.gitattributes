@@ -1,0 +1,24 @@
+# .gitattributes —— 给 git 看的"文件属性"清单，最常用的一条规定是「换行符」。
+#
+# 背景：Windows 的文本文件行尾是 CRLF（\r\n），Linux/macOS 是 LF（\n）。
+# 如果不统一，同一个文件在两边各存一次就会被 git 认为"整篇都改了"（假 diff），
+# 合并时也会到处冲突。所以约定：**仓库里一律存 LF**。
+#
+# text=auto ：让 git 自动识别哪些是文本文件（二进制文件不动）
+# eol=lf    ：检出到工作区时也统一用 LF（本项目的开发环境是 Linux/WSL）
+
+* text=auto eol=lf
+
+# 例外：Windows 专用的批处理文件必须是 CRLF，否则可能执行异常
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# 明确标记二进制文件，避免被当成文本转换
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.zip binary
+*.pdf binary
+*.xlsx binary

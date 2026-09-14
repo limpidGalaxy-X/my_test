@@ -1,0 +1,27 @@
+# .gitignore = 告诉 git "这些文件永远不要跟踪"。
+# 练习重点：造出 data/ 目录后运行 git status，看看它会不会出现。
+
+# 应用运行时写出来的数据（不该进仓库）
+data/
+
+# Python 缓存
+__pycache__/
+*.py[cod]
+
+# 虚拟环境
+.venv/
+venv/
+
+# 编辑器配置：先忽略整个 .vscode/，再用 ! 把"团队共享的那几个文件"放回来。
+# 这就是 gitignore 的反向规则（! = 撤销忽略），实际项目里很常用：
+# 个人偏好类文件不进仓库，团队约定类文件（调试/任务/推荐扩展）要进仓库。
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# 其他编辑器 / 系统文件
+.idea/
+.DS_Store
+Thumbs.db

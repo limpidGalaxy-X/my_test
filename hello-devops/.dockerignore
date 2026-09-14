@@ -1,0 +1,16 @@
+# .dockerignore = 给 docker build 看的"不要打包进镜像"清单。
+# 它和 .gitignore 长得像，但作用完全不同：
+#   .gitignore   -> git 不管这些文件
+#   .dockerignore-> docker build 的上下文里不带这些文件
+# 写它的好处：构建更快，而且不会把 .git 历史、本地数据、虚拟环境塞进镜像。
+
+.git
+.gitignore
+.dockerignore
+.devcontainer
+.vscode
+data/
+__pycache__/
+*.pyc
+.venv/
+*.md

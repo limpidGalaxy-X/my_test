@@ -1,0 +1,14 @@
+{
+  // 打开这个项目时，VS Code 会提示安装这些扩展。
+  // 这里只列"在项目里干活"用的扩展 —— 它们要装在 WSL: Ubuntu-22.04 那一侧。
+  // 故意不列 WSL / Dev Containers / Remote-SSH：那些是"通道"扩展，必须装在
+  // Windows（本地）侧，靠工作区推荐去装很容易装错一侧，还会一直弹提示。
+  // 详见 docs/vscode-workflow.md 第 0 步的对照表。
+  "recommendations": [
+    // 容器类扩展装一个就够。这里用老的 Docker 扩展（鲸鱼图标，本教程按它描述）。
+    // 微软新的 Container Tools（ms-azuretools.vscode-containers）功能与它重叠，
+    // 想换的话：把下面这行替换成 Container Tools，并卸掉另一个，别两个都装。
+    "ms-azuretools.vscode-docker",
+    "ms-python.python"
+  ]
+}

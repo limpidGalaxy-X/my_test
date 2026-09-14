@@ -1,0 +1,6 @@
+{
+  // 统一用 LF 换行：避免 Windows 侧编辑器写进 CRLF，导致 Linux 侧 git 出现"整篇被改写"的假 diff
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true
+}

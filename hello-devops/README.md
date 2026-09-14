@@ -745,6 +745,31 @@ docker build -t hello-devops:1.0 .           # 再来一次，这次会成功
 > DOCKER_BUILDKIT=0 docker build -t hello-devops:1.0 .
 > ```
 
+**Q13. `git config user.name / user.email` 跟我的 GitHub 账号、密码是什么关系？**
+**配置身份时和 GitHub 完全无关**：那两条命令只是往 `~/.gitconfig` 里写两个字符串，**不联网、不校验、不需要密码**。它们的作用是给每个 commit 署上"作者是谁"。
+但**邮箱决定了 GitHub 认不认这是你**：GitHub 按 email 把提交归到某个账号名下。
+| 你关心的事 | 用到的机制 | 在哪里发生 |
+| --- | --- | --- |
+| 提交记录上写谁的名字 | `user.name` / `user.email`（本地文本） | 每次 `git commit`，不联网 |
+| GitHub 上显示你的头像/贡献 | **email** 与你账号里已验证的邮箱匹配 | 推送后由 GitHub 匹配 |
+| 能不能推上去（身份验证） | **Personal Access Token 或 SSH key**，不是账号密码 | 每次 `git push` |
+| 不想每次输 token | `credential.helper`（如 `store`，明文存 `~/.git-credentials`）或 SSH key / `gh auth login` | 首次 `git push` 之后 |
+
+几个实用结论：
+```bash
+# 名字随便起，但建议与 GitHub 用户名一致；邮箱建议与 GitHub 账号一致
+git config --global user.name  "你的名字"
+git config --global user.email "你的邮箱@example.com"
+```
+- 邮箱会**永久写进每个 commit**，推到公开仓库就等于公开。GitHub 的 Settings → Emails 里可以开启 "Keep my email addresses private"，
+  它会给你一个 `数字+用户名@users.noreply.github.com` 的专用地址，用它最省心（GitHub 仍会正确归属到你账号）。
+- 身份必须**在你要提交的那一侧配**：WSL 里配的，PowerShell 里的 git 看不到（见 `docs/windows-wsl.md` 第 6 节）。
+- set 错了也不用重装 git：`git config --global user.email "..."` 再改即可；但**已经产生的 commit 不会自动跟着变**，
+  所以最好在第一次 commit 之前就设对（本项目现在 `commits = 0`，正是最佳时机）。
+- 推送认证：GitHub 早在 2021 年就取消了"账号密码推送"。要么用 PAT 当密码，要么用 SSH key（`ssh-keygen -t ed25519` → 公钥贴到 GitHub → Settings → SSH and GPG keys），
+  要么装 GitHub CLI 后 `gh auth login`。
+- **本地 git 根本不需要 GitHub 账号**：没有账号也能 init / add / commit / 看 log；只有 `push` / `pull` 才涉及远端和认证。
+
 ---
 
 ## 9. 练习清单（全部做完，你就算入门了）

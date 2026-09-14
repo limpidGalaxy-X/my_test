@@ -53,9 +53,9 @@ def add(a: int, b: int) -> int:
 运行任意一个：
 
 ```powershell
-cd E:\PyTest\mcp_learning\00_装饰器
-python "01_函数是一等公民.py"
-python "08_练习题.py"          # 未实现时会提示 "还没实现"
+cd E:\PyTest\learning\mcp_learning\00_装饰器
+..\.venv\Scripts\python.exe "01_函数是一等公民.py"
+..\.venv\Scripts\python.exe "08_练习题.py"          # 未实现时会提示 "还没实现"
 ```
 
 ---

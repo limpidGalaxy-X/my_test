@@ -4,13 +4,15 @@
 代码里的注释、输出、坑点记录都来自真实运行结果，而不是抄文档。
 
 ```
-E:\PyTest\mcp_learning\
+E:\PyTest\learning\mcp_learning\
 ├── README.md                ← 你在这里（学习路线图）
 ├── 00_装饰器\                前置课：不理解装饰器，看 MCP 就是黑魔法
 ├── 01_MCP概念\               概念篇：先建心智模型，再动手
 ├── 02_SDK基础\               动手篇：从 15 行服务器到完整客户端
 ├── 03_进阶\                  进阶篇：结构化输出、lifespan、传输、认证、排错
-└── 04_实战项目\              实战：一个完整可用的「个人笔记库」服务器
+├── 04_实战项目\              实战：一个完整可用的「个人笔记库」服务器
+├── requirements.txt         本课程需要的第三方包清单（环境可复现）
+└── .venv\                   本课程专用的虚拟环境 ← 只有它需要装包，不进 git
 ```
 
 ---
@@ -19,7 +21,7 @@ E:\PyTest\mcp_learning\
 
 | 项目 | 值 |
 | --- | --- |
-| Python | **3.14.7**（`E:\PyTest\.venv`） |
+| Python | **3.14.7**（`E:\PyTest\learning\mcp_learning\.venv`） |
 | MCP Python SDK | **2.2.0** |
 | 默认协商到的协议版本 | **2026-07-28** |
 | 支持的协议版本 | `2024-11-05` / `2025-03-26` / `2025-06-18` / `2025-11-25` / `2026-07-28` |
@@ -27,8 +29,8 @@ E:\PyTest\mcp_learning\
 验证一下：
 
 ```powershell
-cd E:\PyTest
-.\.venv\Scripts\python.exe "mcp_learning\02_SDK基础\00_环境体检.py"
+cd E:\PyTest\learning\mcp_learning
+.\.venv\Scripts\python.exe "02_SDK基础\00_环境体检.py"
 ```
 
 看到 `[OK] 端到端冒烟测试通过，环境可用。` 就可以开始了。
@@ -125,10 +127,10 @@ mcp = FastMCP("Demo")
 一个完整的「个人笔记库」服务器：lifespan + 6 工具 + 2 资源模板 + 2 提示词 + 11 个测试。
 
 ```powershell
-cd E:\PyTest\mcp_learning\04_实战项目
-..\..\.venv\Scripts\python.exe server.py          # 看完整流程
-..\..\.venv\Scripts\python.exe client.py          # 客户端怎么用
-..\..\.venv\Scripts\python.exe test_server.py     # 11 个测试
+cd E:\PyTest\learning\mcp_learning\04_实战项目
+..\.venv\Scripts\python.exe server.py          # 看完整流程
+..\.venv\Scripts\python.exe client.py          # 客户端怎么用
+..\.venv\Scripts\python.exe test_server.py     # 11 个测试
 ```
 
 ---
@@ -136,8 +138,8 @@ cd E:\PyTest\mcp_learning\04_实战项目
 ## 四、快速开始（30 秒版）
 
 ```powershell
-cd E:\PyTest\mcp_learning\02_SDK基础
-..\..\.venv\Scripts\python.exe "02_最小服务器.py"
+cd E:\PyTest\learning\mcp_learning\02_SDK基础
+..\.venv\Scripts\python.exe "02_最小服务器.py"
 ```
 
 你会看到 SDK 自动为这个函数生成的 JSON Schema：

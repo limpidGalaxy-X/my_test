@@ -23,7 +23,7 @@
 ## 二、环境准备
 
 ```powershell
-# 在 E:\PyTest 下（工作区已有 .venv）
+# 在 E:\PyTest\learning\mcp_learning 下（本课程自带 .venv）
 .\.venv\Scripts\python.exe -m pip install "mcp[cli]"
 
 # 验证

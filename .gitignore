@@ -18,3 +18,6 @@ dist/
 .idea/
 .DS_Store
 Thumbs.db
+
+# MCP 实战项目运行时自动生成的数据文件（可删）
+learning/mcp_learning/04_实战项目/notes.json

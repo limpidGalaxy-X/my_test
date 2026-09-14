@@ -1,0 +1,64 @@
+# learning\mcp_learning\.venv —— 本课程专用的虚拟环境（Python 3.14.7 / Windows）
+#
+# 只有这个课程需要第三方包。learning\ 下的另外两个课程
+# （python_learning / dict_learning）纯标准库，直接用系统解释器 python 就行，不需要虚拟环境。
+# hello-devops 有自己的环境（Flask 属于那个项目），见 hello-devops/docs/venv-guide.md。
+#
+# 在 mcp_learning 目录下从零重建：
+#   E:\Python\Python314\python.exe -m venv .venv
+#   .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+#   .\.venv\Scripts\python.exe -m pip install pytest        # 只在要跑测试时装
+#
+# 装了新包后重新导出：
+#   .\.venv\Scripts\python.exe -m pip freeze |
+#       Where-Object { $_ -notmatch '^(pip|setuptools|wheel)==' } |
+#       Set-Content requirements.txt
+#
+# 下面第一行是"主动安装的直接依赖"（mcp 的 CLI 依赖通过 [cli] extra 一并带入），
+# 其余为传递依赖，由 pip freeze 导出，用于精确复现。
+
+# ---- 直接依赖 ----
+mcp==2.2.0                  # mcp_learning 的主角（安装命令：pip install "mcp[cli]"）
+
+# ---- 传递依赖（自动带入，勿手动改版本） ----
+annotated-doc==0.0.5
+annotated-types==0.8.0
+anyio==4.15.1
+attrs==26.1.0
+cffi==2.1.1
+click==8.5.0
+colorama==0.4.6
+cryptography==50.0.1
+h11==0.16.0
+httpcore2==2.12.0
+httpx2==2.12.0
+idna==3.19
+jsonschema==4.26.0
+jsonschema-specifications==2025.9.1
+markdown-it-py==4.2.0
+mcp-types==2.2.0
+mdurl==0.1.2
+opentelemetry-api==1.44.0
+pycparser==3.0
+pydantic==2.13.5
+pydantic_core==2.46.5
+Pygments==2.21.0
+PyJWT==2.13.0
+python-dotenv==1.2.3
+python-multipart==0.0.32
+pywin32==312
+referencing==0.37.0
+rich==15.0.0
+rpds-py==2026.6.3
+shellingham==1.5.4
+sse-starlette==3.4.11
+starlette==1.6.0
+truststore==0.10.4
+typer==0.27.2
+typing-inspection==0.4.4
+typing_extensions==4.16.0
+uvicorn==0.52.4
+
+# ---- 开发/测试依赖（当前【未安装】，需要时手动装） ----
+# pytest              # learning\mcp_learning\02_SDK基础\08_测试与pytest.py
+#                     # learning\mcp_learning\04_实战项目\test_server.py

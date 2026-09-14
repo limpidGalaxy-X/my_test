@@ -40,22 +40,22 @@
 ## 运行
 
 ```powershell
-cd E:\PyTest\mcp_learning\04_实战项目
+cd E:\PyTest\learning\mcp_learning\04_实战项目
 
 # 1) 自测：看完整流程（会临时写入再清理笔记）
-..\..\.venv\Scripts\python.exe server.py
+..\.venv\Scripts\python.exe server.py
 
 # 2) 客户端演示（内存直连）
-..\..\.venv\Scripts\python.exe client.py
+..\.venv\Scripts\python.exe client.py
 
 # 3) 单元测试
-..\..\.venv\Scripts\python.exe test_server.py
+..\.venv\Scripts\python.exe test_server.py
 
 # 4) 作为真正的服务器跑起来
-..\..\.venv\Scripts\python.exe server.py --serve                 # stdio
-..\..\.venv\Scripts\python.exe server.py --http                  # http://127.0.0.1:8000/mcp
-..\..\.venv\Scripts\python.exe client.py --http http://127.0.0.1:8000/mcp
-..\..\.venv\Scripts\python.exe -m mcp dev server.py               # MCP Inspector（需要 Node.js）
+..\.venv\Scripts\python.exe server.py --serve                 # stdio
+..\.venv\Scripts\python.exe server.py --http                  # http://127.0.0.1:8000/mcp
+..\.venv\Scripts\python.exe client.py --http http://127.0.0.1:8000/mcp
+..\.venv\Scripts\python.exe -m mcp dev server.py               # MCP Inspector（需要 Node.js）
 ```
 
 接进 Claude Desktop：
@@ -64,8 +64,8 @@ cd E:\PyTest\mcp_learning\04_实战项目
 {
   "mcpServers": {
     "notes": {
-      "command": "E:\\PyTest\\.venv\\Scripts\\python.exe",
-      "args": ["E:\\PyTest\\mcp_learning\\04_实战项目\\server.py", "--serve"]
+      "command": "E:\\PyTest\\learning\\mcp_learning\\.venv\\Scripts\\python.exe",
+      "args": ["E:\\PyTest\\learning\\mcp_learning\\04_实战项目\\server.py", "--serve"]
     }
   }
 }

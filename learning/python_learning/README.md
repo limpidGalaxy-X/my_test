@@ -7,7 +7,7 @@
 注释里的结论都来自在本机的真实运行结果。
 
 ```
-E:\PyTest\python_learning\
+E:\PyTest\learning\python_learning\
 ├── README.md                    ← 你在这里（学习路线 + 速查 + 自查）
 ├── 01_lambda基础.py              lambda 是什么、什么不能做、延迟绑定坑
 ├── 02_map_filter_reduce.py      函数式三件套 + any/all + 与推导式的性能实测
@@ -25,12 +25,13 @@ E:\PyTest\python_learning\
 
 ## 一、环境与运行
 
-本机验证环境：**Python 3.14.7**（虚拟环境 `E:\PyTest\.venv`），只用标准库，无需安装任何包。
+本机验证环境：**Python 3.14.7**（系统解释器 `python`，即 `E:\Python\Python314\python.exe`），
+只用标准库，**不需要虚拟环境**（所以本目录没有任何 `.venv` 依赖）。
 
 ```powershell
-cd E:\PyTest\python_learning
-..\.venv\Scripts\python.exe "01_lambda基础.py"
-..\.venv\Scripts\python.exe "09_练习题.py"      # 未实现时会提示"还没实现"
+cd E:\PyTest\learning\python_learning
+python "01_lambda基础.py"
+python "09_练习题.py"      # 未实现时会提示"还没实现"
 ```
 
 ---
@@ -158,8 +159,8 @@ list(islice(count(), 5))   # 无限序列必须截断
 ## 六、跑一遍全部文件（冒烟测试）
 
 ```powershell
-cd E:\PyTest\python_learning
-Get-ChildItem *.py | ForEach-Object { ..\.venv\Scripts\python.exe $_.FullName | Out-Null; "OK $($_.Name)" }
+cd E:\PyTest\learning\python_learning
+Get-ChildItem *.py | ForEach-Object { python $_.FullName | Out-Null; "OK $($_.Name)" }
 ```
 
 `01`~`08` 是讲解脚本（跑完应无报错），`09` 未做题时显示"还没实现"，

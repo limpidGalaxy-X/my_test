@@ -4,7 +4,7 @@
 **键必须可哈希（≈ 不可变），值什么都可以。**
 
 ```
-E:\PyTest\dict_learning\
+E:\PyTest\learning\dict_learning\
 ├── README.md                    ← 你在这里（路线 + 键值要求对照 + 速查 + 自查）
 ├── 01_字典基础.py                创建/访问/增删改/遍历/顺序/嵌套
 ├── 02_键的要求.py                可哈希是什么、黑白名单、1 与 True、NaN、自定义类（重点）
@@ -19,12 +19,13 @@ E:\PyTest\dict_learning\
 
 ## 一、环境与运行
 
-本机验证环境：**Python 3.14.7**（`E:\PyTest\.venv`），只用标准库。
+本机验证环境：**Python 3.14.7**（系统解释器 `python`，即 `E:\Python\Python314\python.exe`），
+只用标准库，**不需要虚拟环境**（所以本目录没有任何 `.venv` 依赖）。
 
 ```powershell
-cd E:\PyTest\dict_learning
-..\.venv\Scripts\python.exe "01_字典基础.py"
-..\.venv\Scripts\python.exe "06_练习题.py"     # 未实现时会提示"还没实现"
+cd E:\PyTest\learning\dict_learning
+python "01_字典基础.py"
+python "06_练习题.py"     # 未实现时会提示"还没实现"
 ```
 
 ---
@@ -166,8 +167,8 @@ for k in list(d): del d[k]             # 边遍历边删：先做快照
 ## 七、跑一遍全部文件（冒烟测试）
 
 ```powershell
-cd E:\PyTest\dict_learning
-Get-ChildItem *.py | ForEach-Object { ..\.venv\Scripts\python.exe $_.FullName | Out-Null; "OK $($_.Name)" }
+cd E:\PyTest\learning\dict_learning
+Get-ChildItem *.py | ForEach-Object { python $_.FullName | Out-Null; "OK $($_.Name)" }
 ```
 
 `01`~`05` 是讲解脚本（跑完应无报错），`06` 未做题时显示"还没实现"，

@@ -190,6 +190,30 @@ ls -a        # 应该能看到 app.py Dockerfile templates 等文件
 
 > 以后就用 `~/hello-devops` 这一份练习。想改代码，可以在 VS Code 里打开这一份（第 7 关）。
 
+**两份副本的关系（很重要，很多人在这里犯迷糊）：** `~/hello-devops` 是**复制**出来的独立副本，不是链接、不是映射。从此两边各改各的，**不会自动同步**。
+
+| | 位置 | 在哪块磁盘上 | 角色 |
+| --- | --- | --- | --- |
+| 工作副本 | `/home/你/hello-devops`（即 `~`） | Linux 自己的 ext4（虚拟磁盘 ext4.vhdx） | **日常就改这一份** |
+| 原始素材 | `E:\PyTest\hello-devops` = `/mnt/e/PyTest/hello-devops` | Windows 的 NTFS | 备份 / 对照 / 重置 |
+
+怎么分辨自己在改哪一份？看路径（或 VS Code 左下角是不是 `WSL: Ubuntu-22.04`）就够了。
+
+**如果 Windows 那份更新了（文档、`.vscode/` 配置有变动），把它合并过来：**
+
+```bash
+cd ~/hello-devops
+git status                                # 先确认自己手上没有未提交的改动
+cp -r /mnt/e/PyTest/hello-devops/. .      # 注意结尾的 /. —— 这样隐藏文件（.vscode 等）才会一起过来
+git status                                # 看看多出/变了哪些文件
+git add . && git commit -m "chore: 同步文档与 VS Code 配置"
+```
+
+> - 真正的"两边同步"应该靠 **git 远端**（`git push` / `git pull`）；`cp` 只适合这种"把素材搬进来/搬过去"的一次性动作。
+> - **不要两边同时编辑同一个文件**：不同系统、不同换行符策略，很容易产生"整篇被改写"的假 diff（见 `docs/windows-wsl.md`）。
+
+> 📄 想彻底搞清 Windows 与 WSL2 的边界（路径对照、三层 localhost、docker 引擎在哪、软件该装在哪一侧），看 **`docs/windows-wsl.md`**；VS Code 的实操看 **`docs/vscode-workflow.md`**。
+
 ---
 
 ## 3. 第 1 关：Git 基础（20 分钟）
